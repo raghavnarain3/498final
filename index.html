@@ -3,17 +3,12 @@
 <style> /* set the CSS */
 
 body { font: 12px Arial;}
-path { 
-    stroke: steelblue;
-    stroke-width: 2;
-    fill: none;
-}
 
-.axis path,
 .axis line {
     fill: none;
     stroke: grey;
     stroke-width: 1;
+    fill: none;
     shape-rendering: crispEdges;
 }
 
@@ -30,15 +25,16 @@ var margin = {top: 30, right: 20, bottom: 30, left: 50},
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
+// Parse the date / time
+var parseDate = d3.time.format("%d-%b-%y").parse;
+
 // Set the ranges
-var x = d3.scale.ordinal()
-    .domain([ "1-May-12", "30-Apr-12", "27-Apr-12", "26-Apr-12", "25-Apr-12", "24-Apr-12", "23-Apr-12", "20-Apr-12", "19-Apr-12", "18-Apr-12", "17-Apr-12", "16-Apr-12", "13-Apr-12", "12-Apr-12", "11-Apr-12", "10-Apr-12", "9-Apr-12", "5-Apr-12", "4-Apr-12", "3-Apr-12", "2-Apr-12", "30-Mar-12", "29-Mar-12", "28-Mar-12", "27-Mar-12", "26-Mar-12"])
-    .rangePoints([0, width]);
+var x = d3.time.scale().range([0, width]);
 var y = d3.scale.linear().range([height, 0]);
 
 // Define the axes
 var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom");
+    .orient("bottom").ticks(10);
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(5);
@@ -55,11 +51,12 @@ var svg = d3.select("body")
 // Get the data
 d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv", function(error, data) {
     data.forEach(function(d) {
-        d.date = d.date;
+        d.date = parseDate(d.date);
         d.close = +d.close;
     });
 
     // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, d3.max(data, function(d) { return d.close; })]);
 
     // Add the scatterplot
@@ -73,6 +70,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
     // Add the X Axis
     svg.append("g")
         .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
     // Add the Y Axis
