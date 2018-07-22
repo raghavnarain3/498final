@@ -34,7 +34,7 @@ var margin = {top: 30, right: 20, bottom: 30, left: 50},
 var parseDate = d3.time.format("%d-%b-%y").parse;
 
 // Set the ranges
-var x = var x = d3.scale.ordinal()
+var x = d3.scale.ordinal()
     .domain([ "1-May-12", "30-Apr-12", "27-Apr-12", "26-Apr-12", "25-Apr-12", "24-Apr-12", "23-Apr-12", "20-Apr-12", "19-Apr-12", "18-Apr-12", "17-Apr-12", "16-Apr-12", "13-Apr-12", "12-Apr-12", "11-Apr-12", "10-Apr-12", "9-Apr-12", "5-Apr-12", "4-Apr-12", "3-Apr-12", "2-Apr-12", "30-Mar-12", "29-Mar-12", "28-Mar-12", "27-Mar-12", "26-Mar-12"])
     .rangePoints([0, width]);
 var y = d3.scale.linear().range([height, 0]);
