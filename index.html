@@ -54,10 +54,11 @@ var svg = d3.select("body")
 
 // Get the data
 d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv", function(error, data) {
+    console.log(data)
+    console.log(error)
     data.forEach(function(d) {
         d.season = d.season;
         d.threes = d.threes;
-        console.log(d.threes);
     });
 
     // Scale the range of the data
