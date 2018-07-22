@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <style> /* set the CSS */
 
-body { font: 12px Arial;}
+body { font: 12px sans-serif;}
 path { 
     stroke: steelblue;
     stroke-width: 2;
@@ -78,6 +78,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
        .selectAll("text")
         .attr("y", 0)
         .attr("x", 9)
+        .attr("dx", "-.8em")
         .attr("dy", ".35em")
         .attr("transform", "rotate(-90)")
         .style("text-anchor", "start");
