@@ -27,7 +27,7 @@ path {
 
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 20, bottom: 100, left: 50},
-    width = 1150 - margin.left - margin.right,
+    width = 1100 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
 // Set the ranges
@@ -96,14 +96,14 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
         .attr("class", "y axis")
         .call(yAxis);
     
-    var leg = [{text: "Not Payoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champions", color: 
+    var leg = [{text: "Not Payoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champs", color: 
 "green"}]
 
   // add legend   
   var legend = svg.append("g")
     .attr("class", "legend")
     .attr("height", 100)
-    .attr("width", 150)
+    .attr("width", 100)
     .attr('transform', 'translate(-20,50)');  
 
 legend.selectAll('rect')
