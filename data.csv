@@ -1,27 +1,40 @@
-date,close
-1-May-12,58.13
-30-Apr-12,53.98
-27-Apr-12,67.00
-26-Apr-12,89.70
-25-Apr-12,99.00
-24-Apr-12,130.28
-23-Apr-12,166.70
-20-Apr-12,234.98
-19-Apr-12,345.44
-18-Apr-12,443.34
-17-Apr-12,543.70
-16-Apr-12,580.13
-13-Apr-12,605.23
-12-Apr-12,622.77
-11-Apr-12,626.20
-10-Apr-12,628.44
-9-Apr-12,636.23
-5-Apr-12,633.68
-4-Apr-12,624.31
-3-Apr-12,629.32
-2-Apr-12,618.63
-30-Mar-12,599.55
-29-Mar-12,609.86
-28-Mar-12,617.62
-27-Mar-12,614.48
-26-Mar-12,606.98
+end_season	season	threes
+No Playoffs	1979-80	90
+No Playoffs	1980-81	57
+No Playoffs	1981-82	78
+Playoffs	1982-83	67
+Playoffs	1983-84	91
+No Playoffs	1984-85	92
+Finals Champions	1985-86	82
+Finals Losers	1986-87	90
+Playoffs	1987-88	148
+No Playoffs	1988-89	166
+Playoffs	1989-90	158
+Playoffs	1990-91	172
+No Playoffs	1991-92	162
+Finals Losers	1992-93	167
+Playoffs	1993-94	192
+Playoffs	1994-95	217
+Playoffs	1995-96	267
+No Playoffs	1996-97	229
+Playoffs	1997-98	192
+No Playoffs	1998-99	135
+Playoffs	1999-00	177
+No Playoffs	2000-01	221
+No Playoffs	2001-02	229
+No Playoffs	2002-03	201
+Playoffs	2003-04	240
+Playoffs	2004-05	226
+No Playoffs	2005-06	269
+Playoffs	2006-07	205
+No Playoffs	2007-08	243
+Finals Losers	2008-09	220
+No Playoffs	2009-10	209
+No Playoffs	2010-11	194
+Playoffs	2011-12	166
+Playoffs	2012-13	272
+Playoffs	2013-14	261
+Finals Champions	2014-15	286
+Finals Losers	2015-16	402
+Finals Champions	2016-17	324
+Playoffs	2017-18	265
