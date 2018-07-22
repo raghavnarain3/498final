@@ -27,13 +27,13 @@ path {
 
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 20, bottom: 100, left: 50},
-    width = 1000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    width = 1150 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 // Set the ranges
 var x = d3.scale.ordinal()
     .domain([ "1979-80", "1980-81", "1981-82", "1982-83",	"1983-84", "1984-85", "1985-86", "1986-87", "1987-88", "1988-89", "1989-90", "1990-91", "1991-92", "1992-93", "1993-94", "1994-95", "1995-96", "1996-97", "1997-98", "1998-99", "1999-00", "2000-01", "2001-02", "2002-03", "2003-04", "2004-05", "2005-06", "2006-07", "2007-08", "2008-09", "2009-10", "2010-11", "2011-12", "2012-13", "2013-14", "2014-15", "2015-16", "2016-17", "2017-18"])
-    .rangePoints([0, width - 100]);
+    .rangePoints([0, width - 150]);
 var y = d3.scale.linear().range([height - 100, 0]);
 
 // Define the axes
@@ -103,7 +103,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
   var legend = svg.append("g")
     .attr("class", "legend")
     .attr("height", 100)
-    .attr("width", 100)
+    .attr("width", 150)
     .attr('transform', 'translate(-20,50)');  
 
 legend.selectAll('rect')
