@@ -32,7 +32,7 @@ var margin = {top: 30, right: 20, bottom: 100, left: 50},
 
 // Set the ranges
 var x = d3.scale.ordinal()
-    .domain([ "1-May-12", "30-Apr-12", "27-Apr-12", "26-Apr-12", "25-Apr-12", "24-Apr-12", "23-Apr-12", "20-Apr-12", "19-Apr-12", "18-Apr-12", "17-Apr-12", "16-Apr-12", "13-Apr-12", "12-Apr-12", "11-Apr-12", "10-Apr-12", "9-Apr-12", "5-Apr-12", "4-Apr-12", "3-Apr-12", "2-Apr-12", "30-Mar-12", "29-Mar-12", "28-Mar-12", "27-Mar-12", "26-Mar-12"])
+    .domain([ "1979-80", "1980-81", "1981-82", "1982-83",	"1983-84", "1984-85", "1985-86", "1986-87", "1987-88", "1988-89", "1989-90", "1990-91", "1991-92", "1992-93", "1993-94", "1994-95", "1995-96", "1996-97", "1997-98", "1998-99", "1999-00", "2000-01", "2001-02", "2002-03", "2003-04", "2004-05", "2005-06", "2006-07", "2007-08", "2008-09", "2009-10", "2010-11", "2011-12", "2012-13", "2013-14", "2014-15", "2015-16", "2016-17", "2017-18"])
     .rangePoints([0, width]);
 var y = d3.scale.linear().range([height, 0]);
 
@@ -55,20 +55,20 @@ var svg = d3.select("body")
 // Get the data
 d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv", function(error, data) {
     data.forEach(function(d) {
-        d.date = d.date;
-        d.close = +d.close;
+        d.season = d.season;
+        d.threes = +d.threes;
     });
 
     // Scale the range of the data
-    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+    y.domain([0, d3.max(data, function(d) { return d.threes; })]);
 
     // Add the scatterplot
     svg.selectAll("dot")
         .data(data)
       .enter().append("circle")
         .attr("r", 3.5)
-        .attr("cx", function(d) { return x(d.date); })
-        .attr("cy", function(d) { return y(d.close); });
+        .attr("cx", function(d) { return x(d.season); })
+        .attr("cy", function(d) { return y(d.threes); });
 
     // Add the X Axis
     svg.append("g")
