@@ -74,7 +74,6 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
         .attr("r", 5.5)
         .attr("cx", function(d) { return x(d.season); })
         .attr("cy", function(d) { return y(d.threes); })
-	.text(function(d) { return 'hello'; })
         .attr("fill", function(d) { 
                                     if (d.end_season == "No Playoffs") { return "red" }
                                     else if (d.end_season == "Playoffs") { return "purple" }
@@ -85,7 +84,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
 	node.append("text")
 		.attr("x", function(d) { return x(d.season); })
 		.attr("y", function(d) { return y(d.threes - 7); })
-		.text(function(d) { return d.text; });
+		.text(function(d) { return d.season; });
 
     // Add the X Axis
     svg.append("g")
