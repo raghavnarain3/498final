@@ -84,7 +84,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
 	node.append("text")
 		.attr("x", function(d) { return x(d.season); })
 		.attr("y", function(d) { return y(d.threes - 7); })
-		.text(function(d) { return d.season; });
+		.text(function(d) { return d.text; });
 
     // Add the X Axis
     svg.append("g")
