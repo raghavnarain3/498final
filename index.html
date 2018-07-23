@@ -65,7 +65,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
     y.domain([0, d3.max(data, function(d) { return 402; })]);
 
     // Add the scatterplot https://stackoverflow.com/questions/12266967/d3-js-how-to-add-labels-to-scatter-points-on-graph
-    var node - svg.selectAll("g")
+    var node = svg.selectAll("g")
 	.data(data)
 	.enter().append("g");
 	
