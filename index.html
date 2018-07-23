@@ -68,7 +68,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
     svg.selectAll("dot")
         .data(data)
       .enter().append("circle")
-        .attr("r", 3.5)
+        .attr("r", 5.5)
         .attr("cx", function(d) { return x(d.season); })
         .attr("cy", function(d) { return y(d.threes); })
 	.text(function(d) { return 'hello'; })
