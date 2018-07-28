@@ -130,7 +130,7 @@ legend.selectAll('rect')
       .data(leg)
       .enter()
       .append("text")
-	.onclick(function(d) {
+	.on("click", function(d) {
 		alert('d.text');
 	})
 	  .attr("x", width - 52)
