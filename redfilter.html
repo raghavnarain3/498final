@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body { font: 12px sans-serif;}
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+</style>
+<body>
+
+<!-- load the d3.js library -->    
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 100, left: 50},
+    width = 1100 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+
+// Set the ranges
+var x = d3.scale.ordinal()
+    .domain([ "1979-80", "1980-81", "1981-82", "1982-83",	"1983-84", "1984-85", "1985-86", "1986-87", "1987-88", "1988-89", "1989-90", "1990-91", "1991-92", "1992-93", "1993-94", "1994-95", "1995-96", "1996-97", "1997-98", "1998-99", "1999-00", "2000-01", "2001-02", "2002-03", "2003-04", "2004-05", "2005-06", "2006-07", "2007-08", "2008-09", "2009-10", "2010-11", "2011-12", "2012-13", "2013-14", "2014-15", "2015-16", "2016-17", "2017-18"])
+    .rangePoints([0, width - 100]);
+var y = d3.scale.linear().range([height, 0]);
+
+// Define the axes
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(5);
+    
+// Adds the svg canvas
+var svg = d3.select("body")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv", function(error, data) {
+    console.log(data)
+    console.log(error)
+    data.forEach(function(d) {
+        d.season = d.season;
+        d.threes = d.threes;
+    });
+
+    // Scale the range of the data
+    y.domain([0, d3.max(data, function(d) { return 402; })]);
+
+    // Add the scatterplot https://stackoverflow.com/questions/12266967/d3-js-how-to-add-labels-to-scatter-points-on-graph
+    var node = svg.selectAll("g")
+	.data(data)
+	.enter().append("g");
+	
+    node.append("circle")
+    .filter(function(d) { return d.end_season == "No Playoffs" })
+	.attr("class", "dot")
+        .attr("r", 5.5)
+        .attr("cx", function(d) { return x(d.season); })
+        .attr("cy", function(d) { return y(d.threes); })
+        .attr("fill", function(d) { 
+                                    if (d.end_season == "No Playoffs") { return "red" }
+                                    else if (d.end_season == "Playoffs") { return "purple" }
+                                    else if (d.end_season == "Finals Losers") { return "yellow" }
+                                    else { return "green" };
+                                  });
+	
+	node.append("text")
+		.attr("x", function(d) { return x(d.season); })
+		.attr("y", function(d) { return y(d.threes - 10); })
+		.text(function(d) { return d.text; });
+
+    // Add the X Axis
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+       .selectAll("text")
+        .attr("y", 0)
+        .attr("x", 9)
+        .attr("dx", "-1.1em")
+        .attr("dy", ".35em")
+        .attr("transform", "rotate(-90)")
+        .style("text-anchor", "end");
+
+    // Add the Y Axis
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+    
+    var leg = [{text: "Not Payoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champs", color: 
+"green"}]
+
+  // add legend   
+  var legend = svg.append("g")
+    .attr("class", "legend")
+    .attr("height", 100)
+    .attr("width", 100)
+    .attr('transform', 'translate(-20,50)');  
+
+legend.selectAll('rect')
+      .data(leg)
+      .enter()
+      .append("rect")
+	     .attr("x", width - 65)
+       .attr("y", function(d, i){ return i *  20;})
+	  .attr("width", 10)
+	  .attr("height", 10)
+	  .style("fill", function(d) { 
+      return d.color;
+    })
+      
+    legend.selectAll('text')
+      .data(leg)
+      .enter()
+      .append("text")
+	.onclick(function(d) {
+		alert('d.text');
+	})
+	  .attr("x", width - 52)
+      .attr("y", function(d, i){ return i *  20 + 9;})
+	  .text(function(d) {
+        return d.text;
+      });
+
+});
+
+</script>
+	<a  href="https://raghavnarain3.github.io/498final/filter">Back</a>
+</body>
