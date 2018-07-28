@@ -105,7 +105,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data.csv
         .attr("class", "y axis")
         .call(yAxis);
     
-    var leg = [{text: "Not Payoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champs", color: 
+    var leg = [{text: "Not Playoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champs", color: 
 "green"}]
 
   // add legend   
@@ -119,6 +119,7 @@ legend.selectAll('rect')
       .data(leg)
       .enter()
       .append("rect")
+		.filter(function(d) { return d.color == "red" })
 	     .attr("x", width - 65)
        .attr("y", function(d, i){ return i *  20;})
 	  .attr("width", 10)
@@ -131,9 +132,6 @@ legend.selectAll('rect')
       .data(leg)
       .enter()
       .append("text")
-	.onclick(function(d) {
-		alert('d.text');
-	})
 	  .attr("x", width - 52)
       .attr("y", function(d, i){ return i *  20 + 9;})
 	  .text(function(d) {
