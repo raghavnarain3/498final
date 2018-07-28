@@ -120,6 +120,9 @@ legend.selectAll('rect')
       .append("rect")
 	     .attr("x", width - 65)
        .attr("y", function(d, i){ return i *  20;})
+	.onclick(function(d) {
+		alert('hey');
+	})
 	  .attr("width", 10)
 	  .attr("height", 10)
 	  .style("fill", function(d) { 
@@ -130,6 +133,9 @@ legend.selectAll('rect')
       .data(leg)
       .enter()
       .append("text")
+	.onclick(function(d) {
+		alert('d.text');
+	})
 	  .attr("x", width - 52)
       .attr("y", function(d, i){ return i *  20 + 9;})
 	  .text(function(d) {
