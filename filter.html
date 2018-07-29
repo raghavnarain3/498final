@@ -105,8 +105,8 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data_fil
         .attr("class", "y axis")
         .call(yAxis);
     
-    var leg = [{text: "Not Payoffs", color: "red"}, {text: "Playoffs", color: "purple"}, {text: "Finals Losers", color: "yellow"}, {text: "Finals Champs", color: 
-"green"}]
+    var leg = [{text: "Not Payoffs", color: "red", link: "https://raghavnarain3.github.io/498final/redfilter"}, {text: "Playoffs", color: "purple", link: "https://raghavnarain3.github.io/498final/purplefilter"}, {text: "Finals Losers", color: "yellow", link: "https://raghavnarain3.github.io/498final/yellowfilter"}, {text: "Finals Champs", color: 
+"green", link: "https://raghavnarain3.github.io/498final/greenfilter"}]
 
   // add legend   
   var legend = svg.append("g")
@@ -120,7 +120,7 @@ legend.selectAll('rect')
       .enter()
       .append("rect")
 	.on("click", function(d) {
-		alert(d.text);
+		location.href = d.link;
 	})
 	     .attr("x", width - 65)
        .attr("y", function(d, i){ return i *  20;})
@@ -135,7 +135,7 @@ legend.selectAll('rect')
       .enter()
       .append("text")
 	.on("click", function(d) {
-		alert(d.text);
+		location.href = d.link;
 	})
 	  .attr("x", width - 52)
        .attr("y", function(d, i){ return i *  20 + 9;})
