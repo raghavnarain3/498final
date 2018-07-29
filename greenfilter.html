@@ -70,7 +70,7 @@ d3.csv("https://raw.githubusercontent.com/raghavnarain3/498final/master/data_fil
 	.enter().append("g");
 	
     node.append("circle")
-    .filter(function(d) { return d.end_season == "No Playoffs" })
+    .filter(function(d) { return d.end_season == "Finals Champions" })
 	.attr("class", "dot")
         .attr("r", 5.5)
         .attr("cx", function(d) { return x(d.season); })
