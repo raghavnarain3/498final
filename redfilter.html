@@ -132,6 +132,7 @@ legend.selectAll('rect')
       .data(leg)
       .enter()
       .append("text")
+	.filter(function(d) { return d.color == "red" })
 	  .attr("x", width - 52)
       .attr("y", function(d, i){ return i *  20 + 9;})
 	  .text(function(d) {
